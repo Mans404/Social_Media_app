@@ -1,0 +1,16 @@
+{
+  "name": "Smart Code Module 11",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-vscode.vscode-java-pack"
+      ]
+    }
+  }
+}
