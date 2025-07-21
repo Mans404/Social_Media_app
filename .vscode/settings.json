@@ -1,7 +1,5 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
-}{
   // Editor settings
   "editor.fontSize": 14,
   "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
