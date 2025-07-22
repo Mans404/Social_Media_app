@@ -11,6 +11,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   python3-pip \
   openssh-client \
   openjdk-17-jdk \
+  docker-compose \
+  postgresql-client \
   && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
   && apt-get install -y nodejs \
   # Clean up
