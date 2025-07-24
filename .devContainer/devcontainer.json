@@ -4,13 +4,10 @@
     "dockerfile": "Dockerfile",
     "context": "."
   },
+  "remoteUser": "vscode",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "ms-vscode.cpptools",
-        "ms-python.python",
-        "ms-vscode.vscode-java-pack"
-      ]
+      "extensions": ["ms-vscode.vscode-typescript-next"]
     }
   }
 }
