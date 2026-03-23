@@ -1,39 +1,43 @@
-import express, { Express } from "express";
-import { GetStudent } from "./routes/GetStudent";
-import { PostStudent } from "./routes/PostStudent";
+import express, { Express, Request, Response } from "express";
+import { DbService } from "./services/DbService";
 
 export class Server {
   private app: Express;
+  private db: DbService;
+  private port: number;
 
-  constructor() {
+  constructor(port: number) {
     this.app = express();
+    this.port = port;
+    this.db = DbService.getInstance();
+
+    this.initializeMiddlewares();
+    this.initializeRoutes();
+  }
+
+  private initializeMiddlewares(): void {
     this.app.use(express.json());
-    this.setupRoutes();
   }
 
-  private setupRoutes() {
-    /**
-     * /student <GET>
-     */
-    this.app.get("/student", (req, res) => {
-      const getStudentsRoute = new GetStudent();
-      getStudentsRoute.handleRequest(req, res);
+  private initializeRoutes(): void {
+    this.app.get("/", (req: Request, res: Response) => {
+      res.send("API is running...");
     });
 
-    /**
-     * /student <POST>
-     */
-    this.app.post("/student", (req, res) => {
-      const postStudentRoute = new PostStudent();
-      postStudentRoute.handleRequest(req, res);
+    // Test DB route
+    this.app.get("/db-test", async (req: Request, res: Response) => {
+      try {
+        const result = await this.db.query("SELECT NOW()");
+        res.json(result.rows);
+      } catch (error) {
+        res.status(500).json({ error: "Database error" });
+      }
     });
   }
 
-  public start(port: number) {
-    this.app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
+  public start(): void {
+    this.app.listen(this.port, () => {
+      console.log(`Server running on port ${this.port}`);
     });
   }
 }
-
-export default Server;

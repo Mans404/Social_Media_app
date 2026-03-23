@@ -7,12 +7,14 @@
     "build": "tsc",
     "start": "node dist/main.js",
     "dev": "tsc && node dist/main.js",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "seed:users": "tsc && node dist/seeds/userSeeder.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
-    "@types/node": "^20.19.9",
+    "@types/node": "^20.19.37",
     "@types/pg": "^8.15.4",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
@@ -20,8 +22,11 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
     "express": "^5.1.0",
     "node-fetch": "^3.3.2",
-    "pg": "^8.16.3"
+    "pg": "^8.20.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.28"
   }
 }
